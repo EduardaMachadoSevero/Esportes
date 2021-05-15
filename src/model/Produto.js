@@ -10,5 +10,4 @@ class Produto extends Model {
         },{sequelize, tableName:'produtos',})
     }
 }
-
 module.exports = Produto;

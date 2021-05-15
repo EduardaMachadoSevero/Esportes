@@ -3,7 +3,6 @@ const Produto = require('../model/Produto')
 
 const { Op } = require('sequelize')
 
-
 module.exports = {
     async list(req,res){
         const produtos = await Produto.findAll()
@@ -37,7 +36,6 @@ module.exports = {
     async abreedit(req,res){
         const id = req.params.id;
         const produto = await Produto.findByPk(id);
-        //console.log(produto)
         return res.render('admin/produto/edit.ejs',{'Produto':produto, 'msg': req.flash('msg')})
 
     },
@@ -57,8 +55,7 @@ module.exports = {
                 return res.render('admin/produto/edit.ejs',{'Produto':produto, 'msg': req.flash('msg')})
                 
             }
-            );
-        
+              );
     },
     async del(req,res){
 
