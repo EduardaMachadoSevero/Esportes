@@ -1,19 +1,28 @@
 const express = require('express')
+
 const routes = express.Router()
+
 const produtoController = require('../controller/produtoController')
 
+//list
 routes.get('/',produtoController.list)
 
+//filtro
 routes.post('/',produtoController.filtro)
 
+//Abre add
 routes.get('/add',produtoController.abreadd)
 
+//add
 routes.post('/add',produtoController.add)
 
-routes.get('/edt/:id',produtoController.abreedit)
+//abre edit
+routes.get('/edit/:id',produtoController.abreedit)
 
-routes.post('/edt/:id',produtoController.edit)
+//edit
+routes.post('/edit/:id',produtoController.edit)
 
+//del
 routes.get('/del/:id',produtoController.del)
 
 module.exports = routes;
