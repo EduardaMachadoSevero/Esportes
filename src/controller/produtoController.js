@@ -1,6 +1,5 @@
 const { restore } = require('../model/Produto');
 const Produto = require('../model/Produto')
-
 const { Op } = require('sequelize')
 
 
@@ -26,18 +25,17 @@ module.exports = {
     async add(req,res){
         const { nome, valor, tipo } = req.body;
         await Produto.create({nome, valor, tipo}).then(
-            (produto) => {
+        (produto) => {
             req.flash('msg',produto.nome + ' foi adicionado com sucesso!');
             res.redirect('/admin/produto/add');
         }, (err) => {
-            req.flash('msg', "problemas ao adicionar o produto: ")
+            req.flash('msg', "Problemas ao adicionar o produto: ")
             res.redirect('/admin/produto/add');
         });
     },
     async abreedit(req,res){
         const id = req.params.id;
         const produto = await Produto.findByPk(id);
-        //console.log(produto)
         return res.render('admin/produto/edit.ejs',{'Produto':produto, 'msg': req.flash('msg')})
 
     },
@@ -53,12 +51,11 @@ module.exports = {
                 return res.render('admin/produto/edit.ejs',{'Produto':produto, 'msg': req.flash('msg')})
             },
             (err) => {
-                req.flash('msg', ' não houve sucesso na edição!');
+                req.flash('msg', ' Não houve sucesso na edição!');
                 return res.render('admin/produto/edit.ejs',{'Produto':produto, 'msg': req.flash('msg')})
                 
-            }
+              }
             );
-        
     },
     async del(req,res){
        const id = req.params.id;
@@ -70,11 +67,11 @@ module.exports = {
             res.redirect('/admin/produto/')
         },
         (err)=>{
-            req.flash('msg', 'Problema ao deletar o Produto!');
+            req.flash('msg', 'Problemas ao deletar o Produto!');
             res.redirect('/admin/produto/')  
         }
         
        );
         
-    }
+      }
     }

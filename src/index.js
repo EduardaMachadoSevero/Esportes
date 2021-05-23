@@ -5,7 +5,6 @@ var produtoRoute = require('./routes/produtoRoute')
 var quadraRoute = require('./routes/quadraRoute')
 var caixaRoute = require('./routes/caixaRoute')
 
-
 const bodyParser = require('body-parser')
 const path = require('path')
 const flash = require('req-flash')
@@ -21,13 +20,11 @@ app.use(flash())
 app.set('view engine','ejs')
 app.set('views', __dirname+'/views')
 
-app.use(express.static(path.join("public")))
+app.use(express.static(path.join("src","public")))
 
 app.use('/admin/produto', produtoRoute)
 //app.use('/admin/quadra', quadraRoute)
 //app.use('/caixa', caixaRoute)
-    
-
 
 app.listen(porta)
-    console.log("Confere")
+    console.log("Conexão inicializada!!")
