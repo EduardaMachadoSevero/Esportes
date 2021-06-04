@@ -27,4 +27,4 @@ app.use('/admin/produto', produtoRoute)
 //app.use('/caixa', caixaRoute)
 
 app.listen(porta)
-    console.log("Conexão inicializada!!")
+    console.log("Usar npm start!")
